@@ -55,7 +55,7 @@ public:
   /// </summary>
   /// <param>なし</param>
   /// <returns>なし</returns>
-  Bear(TaskId task_id, TaskManager* task_manager, std::array<int, kBearElementNumber> bear_handle, std::array<int, kBearElementNumber> damage_bear_handle);
+  Bear(TaskId task_id, TaskManager* task_manager, CharacterEventInterface& event_interface, std::array<int, kBearElementNumber> bear_handle, std::array<int, kBearElementNumber> damage_bear_handle);
 
   /// <summary>
   /// デストラクタ

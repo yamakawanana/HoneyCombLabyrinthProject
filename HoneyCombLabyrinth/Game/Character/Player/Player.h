@@ -23,7 +23,7 @@ public:
   /// </summary>
   /// <param>なし</param>
   /// <returns>なし</returns>
-  Player(TaskId task_id, TaskManager* task_manager, std::array<int, kDuckElementNumber> duck_handle);
+  Player(TaskId task_id, TaskManager* task_manager, CharacterEventInterface& event_interface, std::array<int, kDuckElementNumber> duck_handle);
 
   /// <summary>
   /// デストラクタ

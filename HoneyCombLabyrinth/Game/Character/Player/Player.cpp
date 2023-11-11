@@ -129,8 +129,8 @@ namespace {
 /// </summary>
 /// <param>なし</param>
 /// <returns>なし</returns>
-Player::Player(TaskId task_id, TaskManager* task_manager,std::array<int, kDuckElementNumber> duck_handle)
-  : Character(task_id, task_manager)
+Player::Player(TaskId task_id, TaskManager* task_manager, CharacterEventInterface& event_interface, std::array<int, kDuckElementNumber> duck_handle)
+  : Character(task_id, task_manager, event_interface)
   , gr_handle_(duck_handle)
   , change_amount_(100)
   , accumulation_time_(0.0f)

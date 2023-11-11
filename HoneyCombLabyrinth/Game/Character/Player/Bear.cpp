@@ -78,8 +78,8 @@ namespace {
 /// </summary>
 /// <param>なし</param>
 /// <returns>なし</returns>
-Bear::Bear(TaskId task_id, TaskManager* task_manager, std::array<int, kBearElementNumber> bear_handle, std::array<int, kBearElementNumber> damage_bear_handle)
-  : Character(task_id, task_manager)
+Bear::Bear(TaskId task_id, TaskManager* task_manager, CharacterEventInterface& event_interface, std::array<int, kBearElementNumber> bear_handle, std::array<int, kBearElementNumber> damage_bear_handle)
+  : Character(task_id, task_manager, event_interface)
   , bear_handle_(bear_handle)
   , damage_bear_handle_(damage_bear_handle)
   , smile_bear_handle_(0)
