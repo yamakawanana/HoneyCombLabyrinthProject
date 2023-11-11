@@ -59,7 +59,7 @@ public:
   /// </summary>
   /// <param>なし</param>
   /// <returns>なし</returns>
-  RedBee(TaskId task_id, TaskManager* task_manager);
+  RedBee(TaskId task_id, TaskManager* task_manager, CharacterControllerEventInterface& controller_event_interface, EnemyEventInterface& enemy_event_interface, CharacterEventInterface& event_interface);
 
   /// <summary>
   /// デストラクタ

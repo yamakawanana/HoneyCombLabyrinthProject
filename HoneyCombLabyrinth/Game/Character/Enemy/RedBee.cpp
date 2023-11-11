@@ -70,8 +70,8 @@ namespace {
 /// </summary>
 /// <param>なし</param>
 /// <returns>なし</returns>
-RedBee::RedBee(TaskId task_id, TaskManager* task_manager)
-  : EnemyBase(task_id, task_manager)
+RedBee::RedBee(TaskId task_id, TaskManager* task_manager, CharacterControllerEventInterface& controller_event_interface, EnemyEventInterface& enemy_event_interface, CharacterEventInterface& event_interface)
+  : EnemyBase(task_id, task_manager, controller_event_interface, enemy_event_interface, event_interface)
   , thinking_phase_(kNone)
   , direction_(Field::DirectionType::kMax)
   , accumulation_time_(0.0f)

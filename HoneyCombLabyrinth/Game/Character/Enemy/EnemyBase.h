@@ -16,7 +16,7 @@ public:
   /// </summary>
   /// <param>なし</param>
   /// <returns>なし</returns>
-  EnemyBase(TaskId task_id, TaskManager* task_manager);
+  EnemyBase(TaskId task_id, TaskManager* task_manager, CharacterControllerEventInterface& controller_event_interface, EnemyEventInterface& enemy_event_interface, CharacterEventInterface& event_interface);
 
   /// <summary>
   /// デストラクタ
@@ -84,7 +84,7 @@ protected:
   /// <summary>
   /// フェーズの種類
   /// </summary>
-  //EnemyEventInterface& event_interface_;
+  EnemyEventInterface& event_interface_;
 
   /// <summary>
   /// 歩ける範囲を保存する配列

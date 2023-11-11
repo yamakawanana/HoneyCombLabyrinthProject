@@ -34,7 +34,7 @@ public:
   /// </summary>
   /// <param>なし</param>
   /// <returns>なし</returns>
-  YellowBee(TaskId task_id, TaskManager* task_manager);
+  YellowBee(TaskId task_id, TaskManager* task_manager, CharacterControllerEventInterface& controller_event_interface, EnemyEventInterface& enemy_event_interface, CharacterEventInterface& event_interface);
 
   /// <summary>
   /// デストラクタ

@@ -30,11 +30,12 @@ namespace {
 /// </summary>
 /// <param>なし</param>
 /// <returns>なし</returns>
-EnemyBase::EnemyBase(TaskId task_id, TaskManager* task_manager)
-  : Character(task_id, task_manager)
+EnemyBase::EnemyBase(TaskId task_id, TaskManager* task_manager, CharacterControllerEventInterface& controller_event_interface, EnemyEventInterface& enemy_event_interface, CharacterEventInterface& event_interface)
+  : Character(task_id, task_manager, event_interface)
   , enemy_gr_handle_(0)
   , change_amount_(1)
-  , enemy_controller_(*this)
+  , enemy_controller_(controller_event_interface, *this)
+  , event_interface_(enemy_event_interface)
 {
   DEBUG_PRINT(EnemyBaseのコンストラクタ);
 }
@@ -147,7 +148,7 @@ void EnemyBase::SetGrHandle(int gr_handle) {
 /// <param = "event_interface">敵キャラクターイベントインターフェース</param>
 /// <returns>なし</returns>
 void EnemyBase::SetEnemyEventInterface(EnemyEventInterface& event_interface) {
-  //event_interface_ = event_interface;
+  event_interface_ = event_interface;
 }
 
 /// <summary>
