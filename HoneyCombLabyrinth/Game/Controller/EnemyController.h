@@ -12,7 +12,7 @@ public:
   /// <param name = "event_interface">キャラクターコントローラのイベントインターフェースの参照</param>
   /// <param name = "character">キャラクターの参照</param>
   /// <returns>なし</returns>
-  EnemyController(Character& character);
+  EnemyController(CharacterControllerEventInterface& controller_event_interface, Character& character);
 
   /// <summary>
   /// デストラクタ
@@ -75,7 +75,7 @@ private:
   /// <summary>
   /// キャラクターコントローラのイベントインターフェース
   /// </summary>
-  //CharacterControllerEventInterface& event_interface_;
+  CharacterControllerEventInterface& event_interface_;
 
   /// <summary>
   /// キャラクター
