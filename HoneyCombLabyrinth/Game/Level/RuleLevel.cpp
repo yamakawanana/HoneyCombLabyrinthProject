@@ -95,27 +95,27 @@ namespace {
   /// <summary>
   /// ルール説明画面の背景画像のファイル名を定数kRulePngに格納する
   /// </summary>
-  static const char* kRulePng = "Assets/Images/rule.png";
+  static const char* kRulePng = "Assets/rule.png";
 
   /// <summary>
   /// 三角形の画像のファイル名を定数kTrianglePngに格納する
   /// </summary>
-  static const char* kTrianglePng = "Assets/Images/triangle.png";
+  static const char* kTrianglePng = "Assets/triangle.png";
 
   /// <summary>
   /// BGMのサウンドファイル名を定数kBgmMp3に格納する
   /// </summary>
-  static const char* kBgmMp3 = "Assets/Sounds/No.0141.mp3";
+  static const char* kBgmMp3 = "Assets/No.0141.mp3";
 
   /// <summary>
   /// 次のレベルに遷移する効果音のサウンドファイル名を定数kNextLevelMp3に格納する
   /// </summary>
-  static const char* kNextLevelMp3 = "Assets/Sounds/Enter26.mp3";
+  static const char* kNextLevelMp3 = "Assets/Enter26.mp3";
 
   /// <summary>
   /// ルール説明の次のページに遷移する効果音のサウンドファイル名を定数kNextPageMp3に格納する
   /// </summary>
-  static const char* kNextPageMp3 = "Assets/Sounds/Enter2.mp3";
+  static const char* kNextPageMp3 = "Assets/Enter2.mp3";
 }
 
 /// <summary>
@@ -406,7 +406,7 @@ float RuleLevel::GetHalfHeight() {
 bool RuleLevel::InitializeUpdate(float time) {
   DEBUG_PRINT(RuleLevelの初期化処理);
   //メニューコントローラーを生成する
-  menu_controller_ = new MenuController(Task::kMenuController);
+  menu_controller_ = new MenuController(Task::kMenuController, *this);
   //生成したメニューコントローラーを、タスクマネージャーに積む
   task_manager_->AddTask(menu_controller_);
 
@@ -447,7 +447,6 @@ bool RuleLevel::ProcessingUpdate(float time) {
   accumulation_time_ = accumulation_time_ + time;
   if (accumulation_time_ >= kLimitTime) {
     accumulation_time_ = 0.0f;
-    is_finish_ = true;
   }
 
   //×ボタンが押された場合

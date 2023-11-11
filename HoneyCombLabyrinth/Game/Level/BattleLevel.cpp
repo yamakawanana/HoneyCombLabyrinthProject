@@ -2,7 +2,6 @@
 #include "DxLib.h"
 #include "Game/Level/BattleLevel.h"
 #include "Game/GameInfo.h"
-#include "Game/FadeManager.h"
 
 /// <summary>
 /// 無名名前空間
@@ -14,7 +13,7 @@ namespace {
   /// <summary>
   /// 制限時間を定数kLimitTimeに格納する
   /// </summary>
-  static const float kLimitTime = 30.0f;
+  static const float kLimitTime = 120.0f;
 
   /// <summary>
   /// カウントダウンのグラフィックハンドルの配列の要素数を定数kElementNumberに格納する
@@ -329,142 +328,142 @@ namespace {
   /// <summary>
   /// 蜂の巣の１つの部屋の画像のファイル名を定数kRoomPngに格納する
   /// </summary>
-  static const char* kRoomPng = "Assets/Images/room.png";
+  static const char* kRoomPng = "Assets/room.png";
 
   /// <summary>
   /// 蜂の巣の繋ぎ目の画像のファイル名を定数kJointPngに格納する
   /// </summary>
-  static const char* kJointPng = "Assets/Images/joint.png";
+  static const char* kJointPng = "Assets/joint.png";
 
   /// <summary>
   /// BattleLevelの背景画像のファイル名を定数kBattleBackPngに格納する
   /// </summary>
-  static const char* kBattleBackPng = "Assets/Images/battle_back.png";
+  static const char* kBattleBackPng = "Assets/battle_back.png";
 
   /// <summary>
   /// 赤い蜂の画像のファイル名を定数kRedBeePngに格納する
   /// </summary>
-  static const char* kRedBeePng = "Assets/Images/red_bee.png";
+  static const char* kRedBeePng = "Assets/red_bee.png";
 
   /// <summary>
   /// 黄色い蜂の画像のファイル名を定数kYellowBeePngに格納する
   /// </summary>
-  static const char* kYellowBeePng = "Assets/Images/yellow_bee.png";
+  static const char* kYellowBeePng = "Assets/yellow_bee.png";
 
   /// <summary>
   /// 笑顔のクマの画像のファイル名を定数kSmileBearPngに格納する
   /// </summary>
-  static const char* kSmileBearPng = "Assets/Images/smile_bear.png";
+  static const char* kSmileBearPng = "Assets/smile_bear.png";
 
   /// <summary>
   /// 蜂蜜の画像のファイル名を定数kHoneyPngに格納する
   /// </summary>
-  static const char* kHoneyPng = "Assets/Images/honey.png";
+  static const char* kHoneyPng = "Assets/honey.png";
 
   /// <summary>
   /// ゲームクリアの画像のファイル名を定数kGameClearPngに格納する
   /// </summary>
-  static const char* kGameClearPng = "Assets/Images/game_clear.png";
+  static const char* kGameClearPng = "Assets/game_clear.png";
 
   /// <summary>
   /// キー操作情報の画像のファイル名を定数kKeyInfoPngに格納する
   /// </summary>
-  static const char* kKeyInfoPng = "Assets/Images/key_info.png";
+  static const char* kKeyInfoPng = "Assets/key_info.png";
 
   /// <summary>
   /// 黒い画像のファイル名を定数kBlackPngに格納する
   /// </summary>
-  static const char* kBlackPng = "Assets/Images/black.png";
+  static const char* kBlackPng = "Assets/black.png";
 
   /// <summary>
   /// ゲームオーバーの画像のファイル名を定数kGameOverPngに格納する
   /// </summary>
-  static const char* kGameOverPng = "Assets/Images/gameover.png";
+  static const char* kGameOverPng = "Assets/gameover.png";
 
   /// <summary>
   /// スタートUIの画像のファイル名を定数kStartPngに格納する
   /// </summary>
-  static const char* kStartPng = "Assets/Images/start.png";
+  static const char* kStartPng = "Assets/start.png";
 
   /// <summary>
   /// ポーズUIの画像のファイル名を定数kPausePngに格納する
   /// </summary>
-  static const char* kPausePng = "Assets/Images/pause.png";
+  static const char* kPausePng = "Assets/pause.png";
 
   /// <summary>
   /// クマの画像のファイル名を定数kBearPngに格納する
   /// </summary>
-  static const char* kBearPng = "Assets/Images/bear.png";
+  static const char* kBearPng = "Assets/bear.png";
 
   /// <summary>
   /// アヒルの画像のファイル名を定数kDuckPngに格納する
   /// </summary>
-  static const char* kDuckPng = "Assets/Images/duck.png";
+  static const char* kDuckPng = "Assets/duck.png";
 
   /// <summary>
   /// ゴールの画像のファイル名を定数kGoalPngに格納する
   /// </summary>
-  static const char* kGoalPng = "Assets/Images/goal.png";
+  static const char* kGoalPng = "Assets/goal.png";
 
   /// <summary>
   /// ダメージを受けたアヒルの画像のファイル名を定数kDamageDuckPngに格納する
   /// </summary>
-  static const char* kDamageDuckPng = "Assets/Images/damage_duck.png";
+  static const char* kDamageDuckPng = "Assets/damage_duck.png";
 
   /// <summary>
   /// ダメージを受けたクマの画像のファイル名を定数kDamageBearPngに格納する
   /// </summary>
-  static const char* kDamageBearPng = "Assets/Images/damage_bear.png";
+  static const char* kDamageBearPng = "Assets/damage_bear.png";
 
   /// <summary>
   /// カウントダウンの画像のファイル名を定数kCountdownPngに格納する
   /// </summary>
-  static const char* kCountdownPng = "Assets/Images/countdown.png";
+  static const char* kCountdownPng = "Assets/countdown.png";
 
   /// <summary>
   /// タイムアップの画像のファイル名を定数kTimeUpPngに格納する
   /// </summary>
-  static const char* kTimeUpPng = "Assets/Images/timeup.png";
+  static const char* kTimeUpPng = "Assets/timeup.png";
 
   /// <summary>
   /// 10秒前カウントダウンの画像のファイル名を定数kTenNumberPngに格納する
   /// </summary>
-  static const char* kTenNumberPng = "Assets/Images/ten_countdown.png";
+  static const char* kTenNumberPng = "Assets/ten_countdown.png";
 
   /// <summary>
   /// 3秒前カウントダウンの画像のファイル名を定数kThreeNumberPngに格納する
   /// </summary>
-  static const char* kThreeNumberPng = "Assets/Images/number.png";
+  static const char* kThreeNumberPng = "Assets/number.png";
 
   /// <summary>
   /// 紙吹雪の画像のファイル名を定数kConfettiPngに格納する
   /// </summary>
-  static const char* kConfettiPng = "Assets/Images/confetti.png";
+  static const char* kConfettiPng = "Assets/confetti.png";
 
   /// <summary>
   /// BGMのサウンドファイル名を定数kBgmMp3に格納する
   /// </summary>
-  static const char* kBgmMp3 = "Assets/Sounds/No.0090.mp3";
+  static const char* kBgmMp3 = "Assets/No.0090.mp3";
 
   /// <summary>
   /// ダメージを受けたサウンドのファイル名を定数kDamageMp3に格納する
   /// </summary>
-  static const char* kDamageMp3 = "Assets/Sounds/punch.mp3";
-  
+  static const char* kDamageMp3 = "Assets/punch.mp3";
+
   /// <summary>
   /// ゲームオーバーのサウンドのファイル名を定数kGameOverMp3に格納する
   /// </summary>
-  static const char* kGameOverMp3 = "Assets/Sounds/Shock4.mp3";
+  static const char* kGameOverMp3 = "Assets/Shock4.mp3";
 
   /// <summary>
   /// ゲームクリアのサウンドのファイル名を定数kGameClearMp3に格納する
   /// </summary>
-  static const char* kGameClearMp3 = "Assets/Sounds/clear.mp3";
+  static const char* kGameClearMp3 = "Assets/clear.mp3";
 
   /// <summary>
   /// タイムアップのサウンドのファイル名を定数kTimeUpMp3に格納する
   /// </summary>
-  static const char* kTimeUpMp3 = "Assets/Sounds/whistle.mp3";
+  static const char* kTimeUpMp3 = "Assets/whistle.mp3";
 }
 
 /// <summary>
@@ -719,13 +718,13 @@ bool BattleLevel::InitializeUpdate(float time) {
   field_ = new Field(Task::kField, task_manager_);
 
   //プレイヤーのインスタンスを生成する
-  player_ = new Player(Task::kPlayer, task_manager_, duck_handle);
+  player_ = new Player(Task::kPlayer, task_manager_, *this, duck_handle);
 
   //クマのインスタンスを生成する
-  bear_ = new Bear(Task::kBear, task_manager_, bear_handle, damage_bear_handle);
+  bear_ = new Bear(Task::kBear, task_manager_, *this, bear_handle, damage_bear_handle);
 
   //スタートUIのインスタンスを生成する
-  start_ui_ = new StartUi(Task::kStartUi);
+  start_ui_ = new StartUi(Task::kStartUi, *this);
 
   //バトル情報UIのインスタンスを生成する
   info_ui_ = new InfoUi(Task::kInfoUi, countdown_handle, timeup_handle, ten_countdown_handle, three_countdown_handle);
@@ -836,7 +835,7 @@ bool BattleLevel::InitializeUpdate(float time) {
     TaskId task_id = static_cast<TaskId>(static_cast<int>(TaskId::kRedBee) + i);
 
     //敵を生成する
-    red_bee_[i] = new RedBee(task_id, task_manager_);
+    red_bee_[i] = new RedBee(task_id, task_manager_, *this, *this, *this);
 
     //敵の生成したインスタンスをタスクマネージャーに積む
     task_manager_->AddTask(red_bee_[i]);
@@ -859,7 +858,7 @@ bool BattleLevel::InitializeUpdate(float time) {
     TaskId task_id = static_cast<TaskId>(static_cast<int>(TaskId::kYellowBee) + i);
 
     //敵を生成する
-    yellow_bee_[i] = new YellowBee(task_id, task_manager_);
+    yellow_bee_[i] = new YellowBee(task_id, task_manager_, *this, *this, *this);
 
     //敵の生成したインスタンスをタスクマネージャーに積む
     task_manager_->AddTask(yellow_bee_[i]);
@@ -879,22 +878,22 @@ bool BattleLevel::InitializeUpdate(float time) {
   }
 
   //プレイヤーコントローラーを生成する
-  player_controller_ = new PlayerController(Task::kPlayerController, *player_);
+  player_controller_ = new PlayerController(Task::kPlayerController, *this, *player_);
   //生成したプレイヤーコントローラーを、タスクマネージャーに積む
   task_manager_->AddTask(player_controller_);
 
   //メニューコントローラーを生成する
-  menu_controller_ = new MenuController(Task::kMenuController);
+  menu_controller_ = new MenuController(Task::kMenuController, *this);
   //生成したメニューコントローラーを、タスクマネージャーに積む
   task_manager_->AddTask(menu_controller_);
 
   //ゲームモードを生成する
-  game_mode_ = new GameMode(Task::kGameMode);
+  game_mode_ = new GameMode(Task::kGameMode, *this);
   //生成したゲームモードを、タスクマネージャーに積む
   task_manager_->AddTask(game_mode_);
 
   //ゲームステートを生成する
-  game_state_ = new GameState(Task::kGameState);
+  game_state_ = new GameState(Task::kGameState, *this);
   //生成したゲームステートを、タスクマネージャーに積む
   task_manager_->AddTask(game_state_);
 
@@ -912,10 +911,6 @@ bool BattleLevel::InitializeUpdate(float time) {
 bool BattleLevel::ProcessingUpdate(float time) {
   //DEBUG_PRINT(BattleLevelの毎フレーム更新処理のフェーズ処理);
   accumulation_time_ = accumulation_time_ + time;
-  if (accumulation_time_ >= kLimitTime) {
-    accumulation_time_ = 0.0f;
-    is_finish_ = true;
-  }
 
   //アヒルさんとクマさんの位置を取得する
   int player_x = player_->GetXPosition();

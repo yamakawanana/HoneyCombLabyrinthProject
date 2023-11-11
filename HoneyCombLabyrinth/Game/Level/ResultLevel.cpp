@@ -44,32 +44,32 @@ namespace {
   /// <summary>
   /// クリアした場合のリザルト画面の背景画像のファイル名を定数kClearResultPngに格納する
   /// </summary>
-  static const char* kClearResultPng = "Assets/Images/gameclear_result.png";
+  static const char* kClearResultPng = "Assets/gameclear_result.png";
 
   /// <summary>
   /// ゲームオーバーした場合のリザルト画面の背景画像のファイル名を定数kGameOverResultPngに格納する
   /// </summary>
-  static const char* kGameOverResultPng = "Assets/Images/gameover_result.png";
+  static const char* kGameOverResultPng = "Assets/gameover_result.png";
 
   /// <summary>
   /// 「[Enter]タイトル画面に戻る」の画像のファイル名を定数kPushEnterPngに格納する
   /// </summary>
-  static const char* kPushEnterPng = "Assets/Images/backtitle_black.png";
+  static const char* kPushEnterPng = "Assets/backtitle_black.png";
 
   /// <summary>
   /// ゲームクリア時のリザルト画面BGMのサウンドファイル名を定数kClearBgmMp3に格納する
   /// </summary>
-  static const char* kClearBgmMp3 = "Assets/Sounds/Ein_Prosit.mp3";
+  static const char* kClearBgmMp3 = "Assets/Ein_Prosit.mp3";
 
   /// <summary>
   /// ゲームオーバー時のリザルト画面BGMのサウンドファイル名を定数kGameOverBgmMp3に格納する
   /// </summary>
-  static const char* kGameOverBgmMp3 = "Assets/Sounds/PerituneMaterial_Koi_Wazurai.mp3";
+  static const char* kGameOverBgmMp3 = "Assets/PerituneMaterial_Koi_Wazurai.mp3";
 
   /// <summary>
   /// Enterを押した時の音のサウンドファイル名を定数kEnterMp3に格納する
   /// </summary>
-  static const char* kEnterMp3 = "Assets/Sounds/Enter26.mp3";
+  static const char* kEnterMp3 = "Assets/Enter26.mp3";
 
   /// <summary>
   /// フェード値を定数kFadeValueに格納する
@@ -179,7 +179,7 @@ void ResultLevel::OnPushBackSpace() {
 bool ResultLevel::InitializeUpdate(float time) {
   DEBUG_PRINT(ResultLevelの初期化処理);
   //メニューコントローラーを生成する
-  menu_controller_ = new MenuController(Task::kMenuController);
+  menu_controller_ = new MenuController(Task::kMenuController, *this);
   //生成したメニューコントローラーを、タスクマネージャーに積む
   task_manager_->AddTask(menu_controller_);
 
@@ -224,7 +224,6 @@ bool ResultLevel::ProcessingUpdate(float time) {
   accumulation_time_ = accumulation_time_ + time;
   if (accumulation_time_ >= kLimitTime) {
     accumulation_time_ = 0.0f;
-    is_finish_ = true;
   }
 
   if (GetWindowUserCloseFlag()) {

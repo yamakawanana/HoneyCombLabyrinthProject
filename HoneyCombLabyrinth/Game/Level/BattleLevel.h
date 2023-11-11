@@ -5,7 +5,7 @@
 #include "Game/Character/Player/Player.h"
 #include "Game/Character/Player//Bear.h"
 #include "System/Controller/PlayerController.h"
-//#include "Game/Interface/BattleLevelEventInterface.h"
+#include "Game/Interface/BattleLevelEventInterface.h"
 #include "Game/Character/Enemy/RedBee.h"
 #include "Game/Character/Enemy/YellowBee.h"
 #include "System/Character.h"
@@ -42,7 +42,7 @@ namespace {
 /// <summary>
 /// BattleLevelクラス
 /// </summary>
-class BattleLevel : public Level{
+class BattleLevel : public Level, public BattleLevelEventInterface {
 public:
 
   /// <summary>

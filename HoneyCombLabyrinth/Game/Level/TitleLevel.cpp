@@ -5,7 +5,6 @@
 #include "Game/Level/TitleLevel.h"
 #include "System/Controller/MenuController.h"
 #include "Game/GameInfo.h"
-#include "Game/FadeManager.h"
 
 /// <summary>
 /// 無名名前空間
@@ -127,42 +126,32 @@ namespace {
   /// <summary>
   /// タイトル画面の背景画像のファイル名を定数kTitlePngに格納する
   /// </summary>
-  static const char* kTitlePng = "Assets/Images/title.png";
+  static const char* kTitlePng = "Assets/title.png";
 
   /// <summary>
   /// 「Enterを押してね」の吹き出し画像のファイル名を定数kPushEnterPngに格納する
   /// </summary>
-  static const char* kPushEnterPng = "Assets/Images/push_enter.png";
+  static const char* kPushEnterPng = "Assets/push_enter.png";
 
   /// <summary>
   /// アヒルの画像のファイル名を定数kDuckPngに格納する
   /// </summary>
-  static const char* kDuckPng = "Assets/Images/standing_duck.png";
+  static const char* kDuckPng = "Assets/standing_duck.png";
 
   /// <summary>
   /// クマの画像のファイル名を定数kBearPngに格納する
   /// </summary>
-  static const char* kBearPng = "Assets/Images/standing_bear.png";
+  static const char* kBearPng = "Assets/standing_bear.png";
 
   /// <summary>
   /// BGMのサウンドファイル名を定数kBgmMp3に格納する
   /// </summary>
-  static const char* kBgmMp3 = "Assets/Sounds/maou_bgm_fantasy05.mp3";
+  static const char* kBgmMp3 = "Assets/maou_bgm_fantasy05.mp3";
 
   /// <summary>
   /// Enterを押した時の音のサウンドファイル名を定数kEnterMp3に格納する
   /// </summary>
-  static const char* kEnterMp3 = "Assets/Sounds/Enter26.mp3";
-
-  /// <summary>
-  /// フェードイン時間
-  /// </summary>
-  const float kFadeInTime = 0.75f;
-
-  /// <summary>
-  /// フェードアウト時間
-  /// </summary>
-  const float kFadeOutTime = 2.0f;
+  static const char* kEnterMp3 = "Assets/Enter26.mp3";
 }
 
 /// <summary>
@@ -221,9 +210,7 @@ TitleLevel::~TitleLevel() {
 void TitleLevel::OnPushDecide() {
   DEBUG_PRINT(決定ボタンが押された時のイベント);
   PlaySoundMem(enter_handle_, DX_PLAYTYPE_BACK);
-  //FadeOut();
-  //フェードアウト開始
-  FadeManager::GetInstance()->BeginFadeOut(kFadeOutTime);
+  FadeOut();
 }
 
 /// <summary>
@@ -443,7 +430,7 @@ float TitleLevel::GetHalfHeight() {
 bool TitleLevel::InitializeUpdate(float time) {
   DEBUG_PRINT(TitleLevelの初期化処理);
   //メニューコントローラーを生成する
-  menu_controller_ = new MenuController(Task::kMenuController);
+  menu_controller_ = new MenuController(Task::kMenuController, *this);
   //生成したメニューコントローラーを、タスクマネージャーに積む
   task_manager_->AddTask(menu_controller_);
 
@@ -512,9 +499,6 @@ bool TitleLevel::ProcessingUpdate(float time) {
   accumulation_time_ = accumulation_time_ + time;
   if (accumulation_time_ >= kLimitTime) {
     accumulation_time_ = 0.0f;
-    is_finish_ = true;
-    //フェードアウト開始
-    FadeManager::GetInstance()->BeginFadeOut(kFadeOutTime);
   }
 
   DEBUG_PRINT_VAR(accumulation_time_);

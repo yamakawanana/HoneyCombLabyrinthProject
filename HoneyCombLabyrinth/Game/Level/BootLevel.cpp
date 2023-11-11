@@ -49,7 +49,7 @@ namespace {
   /// <summary>
   //フォントサイズを定数kFontSizeに格納するFontThickness
   /// <summary>
-  static const int kFontSize = 30;
+  static const int kFontSize = 40;
 
   /// <summary>
   //フォントの太さを定数kFontThicknessに格納する
@@ -149,7 +149,7 @@ void BootLevel::OnPushBackSpace() {
 bool BootLevel::InitializeUpdate(float time) {
   DEBUG_PRINT(BootLevelの初期化処理);
   //メニューコントローラーを生成する
-  menu_controller_ = new MenuController(Task::kMenuController);
+  menu_controller_ = new MenuController(Task::kMenuController, *this);
   //生成したメニューコントローラーを、タスクマネージャーに積む
   task_manager_->AddTask(menu_controller_);
   return true;
